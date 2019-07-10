@@ -18,7 +18,7 @@ const StripeCheckoutButton = ({ price, clearEntireCart, history }) => {
     axios
       .post('/payment', body)
       .then(res => {
-        toast.success('Payment Succesful!');
+        toast.success('Payment Succesful!!');
       })
       .catch(error => {
         console.log('Payment error', JSON.parse(error));
