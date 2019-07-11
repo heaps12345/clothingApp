@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCollections } from '../../redux/shop/shop.actions';
+import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 import { selectIsCollectionFetching, selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors';
 import { createStructuredSelector } from 'reselect';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
@@ -15,8 +15,8 @@ const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class ShopPage extends React.Component {
   componentDidMount() {
-    const { fetchCollections } = this.props;
-    fetchCollections();
+    const { fetchCollectionsStart } = this.props;
+    fetchCollectionsStart();
   }
 
   render() {
@@ -41,11 +41,12 @@ class ShopPage extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
+  
   isCollectionFetching: selectIsCollectionFetching,
   isCollectionsLoaded: selectIsCollectionsLoaded
 });
 
 export default connect(
   mapStateToProps,
-  { fetchCollections }
+  { fetchCollectionsStart }
 )(ShopPage);
