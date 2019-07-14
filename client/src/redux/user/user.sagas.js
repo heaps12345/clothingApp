@@ -3,22 +3,13 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import {
   GOOGLE_SIGN_IN_START,
   EMAIL_SIGN_IN_START,
- 
   CHECK_USER_SESSION,
   SIGN_Out_START,
   SIGN_UP_START,
   SIGN_UP_SUCCESS
 } from './user.types';
 
-import {
-  signInSuccess,
-  signInFail,
-  signOutSuccess,
-  signOutFail,
-  signUpFail,
-  
-  signUpSuccess
-} from './user.actions';
+import { signInSuccess, signInFail, signOutSuccess, signOutFail, signUpFail, signUpSuccess } from './user.actions';
 
 import { auth, googleProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
 
