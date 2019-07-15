@@ -11,11 +11,11 @@ import {
 
 import { signInSuccess, signInFail, signOutSuccess, signOutFail, signUpFail, signUpSuccess } from './user.actions';
 
-import { auth, googleProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
+import { auth, googleProvider, createUserFirestoreDocument, getCurrentUser } from '../../firebase/firebase.utils';
 
 export function* getSnapShotFromUserAuth(userAuth, additionalData) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth, additionalData);
+    const userRef = yield call(createUserFirestoreDocument, userAuth, additionalData);
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (err) {
